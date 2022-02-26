@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hola-mundo', function () {
+    return view('paginas/hola-mundo');
+});
+
+Route::get('/grabaciones/{nombre}/{aa?}/{cantidad?}', function ($nombre, $aa = null, $cantidad = 10) {
+
+    return view('paginas/grabaciones', compact('nombre', 'aa', 'cantidad'));
+
+    //→with([
+    //    'nombre' ⇒ $nombre,
+    //    'otra' ⇒ 'otra variable'
+    //]);
+});
