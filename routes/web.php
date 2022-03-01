@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TareasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 /*
@@ -17,17 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tareas', function () {
+Route::get('/tareas', [TareasController::class, 'index']);
 
-    $tareas = DB::table('tareas')->get();
+Route::get('/tareas/create', [TareasController::class, 'create']);
 
-    return view('tareas/indexTareas', compact('tareas'));
-});
-
-Route::get('/tareas/create', function () {
-
-    return view('tareas/formTareas');
-});
+Route::post('/tareas/store', [TareasController::class, 'store']);
 
 Route::get('/hola-mundo', function () {
     return view('paginas/hola-mundo');
