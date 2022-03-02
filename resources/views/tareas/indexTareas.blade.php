@@ -14,7 +14,7 @@
             <th>ID</th>
             <th>Tarea</th>
             <th>Descripcion</th>
-            <th>Tipo</th>
+            <th>Categoria</th>
         </tr>
     </table>
     @foreach ($tareas as $tarea)
@@ -22,7 +22,8 @@
             <td>{{ $tarea->id }}</td>
             <td>{{ $tarea->tarea }}</td>
             <td>{{ $tarea->descripcion }}</td>
-            <td>{{ $tarea->tipo }}</td>
+            <td>{{ $tarea->categoria }}</td>
+            <br>
         </tr>
     @endforeach
 </body>

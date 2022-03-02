@@ -14,7 +14,8 @@ class TareaController extends Controller
      */
     public function index()
     {
-        //
+        $tareas = Tarea::all();
+        return view('tareas.indexTareas', compact('tareas'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TareaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tareas.formTareas');
     }
 
     /**
@@ -35,7 +36,20 @@ class TareaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tarea' => 'required|min:5|max:25',
+            'descripcion' => ['required', 'min:5'],
+            'categoria' => 'required',
+        ]);
+
+        $tarea = new Tarea();
+        $tarea->tarea = $request->tarea;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->categoria = $request->categoria;
+
+        $tarea->save(); //guarda en bd
+
+        return redirect('/tarea');
     }
 
     /**
