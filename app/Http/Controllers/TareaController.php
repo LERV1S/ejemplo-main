@@ -60,7 +60,7 @@ class TareaController extends Controller
      */
     public function show(Tarea $tarea)
     {
-        //
+        return view('tareas.showTarea', compact('tarea'));
     }
 
     /**
@@ -71,7 +71,7 @@ class TareaController extends Controller
      */
     public function edit(Tarea $tarea)
     {
-        //
+
     }
 
     /**

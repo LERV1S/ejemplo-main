@@ -7,7 +7,9 @@
     <title>Tareas</title>
 </head>
 <body>
-    <h1>Tareas</h1>
+    <h1>Listado de Tareas</h1>
+
+    <a href="/tarea/create">Crear Nueva Tarea</a>
 
     <table>
         <tr>
@@ -15,16 +17,20 @@
             <th>Tarea</th>
             <th>Descripcion</th>
             <th>Categoria</th>
+            <th>Acciones</th>
         </tr>
+
+        @foreach ($tareas as $tarea)
+            <tr>
+                <td>{{ $tarea->id }}</td>
+                <td>{{ $tarea->tarea }}</td>
+                <td>{{ $tarea->descripcion }}</td>
+                <td>{{ $tarea->categoria }}</td>
+                <td>
+                    <a href="tarea/{{ $tarea->id }}">Ver Detalle</a>
+                </td>
+            </tr>
+        @endforeach
     </table>
-    @foreach ($tareas as $tarea)
-        <tr>
-            <td>{{ $tarea->id }}</td>
-            <td>{{ $tarea->tarea }}</td>
-            <td>{{ $tarea->descripcion }}</td>
-            <td>{{ $tarea->categoria }}</td>
-            <br>
-        </tr>
-    @endforeach
 </body>
 </html>
