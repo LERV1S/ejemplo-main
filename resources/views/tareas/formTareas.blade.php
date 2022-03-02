@@ -22,10 +22,12 @@
     <form action="/tarea" method="POST">
         @csrf
         <label for="tarea">Nombre de la tarea:</label><br>
-        <input type="text" name="tarea">
+        <input type="text" name="tarea" value="{{ old('tarea') }}">
         <br>
         <label for="descripcion">Descripcion</label><br>
-        <textarea name="descripcion" id="descripcion" cols="10" rows="10"></textarea>
+        <textarea name="descripcion" id="descripcion" cols="10" rows="10">
+            {{ old('descripcion') }}
+        </textarea>
         <br>
 
         <label for="categoria">Categoria</label><br>
