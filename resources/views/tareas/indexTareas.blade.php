@@ -28,6 +28,12 @@
                 <td>{{ $tarea->categoria }}</td>
                 <td>
                     <a href="tarea/{{ $tarea->id }}">Ver Detalle</a>
+                    <a href="tarea/{{ $tarea->id }}/edit">Editar</a>
+                    <form action="/tarea/{{ $tarea->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Borrar">
+                    </form>
                 </td>
             </tr>
         @endforeach
