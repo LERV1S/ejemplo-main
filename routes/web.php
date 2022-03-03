@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\TareaController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,18 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/tarea', TareaController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/hola-mundo', function () {
-    return view('paginas/hola-mundo');
-});
-
-Route::get('/grabaciones/{nombre}/{aa?}/{cantidad?}', function ($nombre, $aa = null, $cantidad = 10) {
-
-    return view('paginas/grabaciones', compact('nombre', 'aa', 'cantidad'));
-
-    //→with([
-    //    'nombre' ⇒ $nombre,
-    //    'otra' ⇒ 'otra variable'
-    //]);
-});
+require __DIR__.'/auth.php';
